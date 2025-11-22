@@ -1,0 +1,24 @@
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;                                                                               ;
+;                MOS6502 Family uP (MPU65XX) Vectors for MOS6502                ;
+;                                                                               ;
+;       Version: v1.0.0                                                         ;
+;       Author: Craig Gregory (CJG)                                             ;
+;                                                                               ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+
+                           .segment "MPU65XX_VECTORS"
+        
+MPU65XX_VECTORS
+    
+MPU65XX_NMI_VECTOR             .word    MPU65XX_NMI
+MPU65XX_RESET_VECTOR           .word    MPU65XX_RESET
+MPU65XX_IRQ_VECTOR 
+MPU65XX_BRK_VECTOR
+                               .word    MPU65XX_IRQ 
+
+MPU65XX_VECTORS_               .equ     * -1

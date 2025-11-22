@@ -1,0 +1,24 @@
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;                                                                               ;
+;                    MOS6502 Family uP (MPU65XX) for MOS6502                    ;
+;                                                                               ;
+;       Version: v1.0.0                                                         ;
+;       Author: Craig Gregory (CJG)                                             ;
+;                                                                               ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+
+                           .segment "MPU65XX_ZP"
+MPU65XX_ZP                     .org     0x0000      ; 1st 256 bytes of memory
+MPU65XX_ZP_                    .equ     * +0xFF
+
+                           .segment "MPU65XX_STACK"
+MPU65XX_STACK                  .org     0x0100      ; 2nd 256 bytes of memory
+MPU65XX_STACK_                 .equ     * +0xFF
+
+                           .segment "MPU65XX_VECTORS"
+MPU65XX_VECTORS                .org     0xFFFA      ; MOS6502 Interrupt Vectors
+MPU65XX_VECTORS_               .equ     * +0x05
