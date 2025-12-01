@@ -1,0 +1,21 @@
+
+;       Label                   OPC     Operand/Arg
+;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+
+                           .include     "../misc/STDLIB.def.a65", as=.STDL, list=.list
+
+                               .STDL:.DECLARE_TYPE       .STDL:V1, list=.list
+
+
+                               .STDL:.JSRWAB  $fffe, ra
+                        arg1   .byte    $00
+                        arg2   .word    $FFFF
+                ra
+                                JSR     mySub
+                                NOP                 ; Execution returns here
+
+
+        mySub
+                                NOP                 ; Body of subroutine
+
+                               .STDL:.RTSI      list=.list
