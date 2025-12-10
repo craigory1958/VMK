@@ -9,29 +9,31 @@
 ;                                                                               ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;       Label                   OPC     Operand/Arg
+;
+;   Label           OPC     Operand/Arg
 ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+;
 
 
-       .JSRWAB             .macro   sub, rap
+   .JSRWAB         .macro   sub, rap
 
-                                JSR     ${sub}
-                               .word    ${rap}
+                        JSR     ${sub}
+                       .word    ${rap}
 
-                           .endmacro
+                   .endmacro
 
 
-       .RTSI               .macro                   ; ReTurn from Interrupt Indirect
+   .RTSI           .macro                   ; ReTurn from Subroutine Indirect
 
-            ; Pull return address from stack, use as pointer to actual return address
+                ; Pull return address from stack, use as pointer to actual return address
 
-                                PLA                 ; Return address pointer low byte
-                                STA     rap        
-                                PLA                 ; Return address pointer high byte
-                                STA     rap +1      
+                        PLA                 ; Return address pointer low byte
+                        STA     rap        
+                        PLA                 ; Return address pointer high byte
+                        STA     rap +1      
 
-                                JMP     [rap]       ; Return from subroutine   
+                        JMP     [rap]       ; Return from subroutine   
        
-                        rap    .word    $0000
+                rap    .word    $0000
 
-                           .endmacro
+                   .endmacro

@@ -9,19 +9,21 @@
 ;                                                                               ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;       Label                   OPC     Operand/Arg
+;
+;   Label           OPC     Operand/Arg
 ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;   ;
+;
+
+    V1             .equ     1
 
 
-        V1                     .equ     1
+   .DECLARE    .macro   type
 
+                   .ifndef  declared
+    declared           .equ     ${type}
 
-       .DECLARE_TYPE       .macro   type
-                               .ifndef declared
-        declared                   .equ ${type}
-
-                                   .if ${type} == V1
-                                       .include "../misc/STDLIB.lib.a65", as=.STDL
-                                   .endif
-                               .endif
-                           .endmacro
+                       .if ${type} == V1
+                           .include "../misc/STDLIB.lib.a65", as=.STDL
+                       .endif
+                   .endif
+               .endmacro
